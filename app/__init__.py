@@ -1,9 +1,14 @@
 # app/__init__.py
 from flask import Flask
 from .models import db
+import os # Importar módulo os para manipulação de caminhos
 
 def create_app():
-    app = Flask(__name__)
+    # Define o caminho absoluto para a pasta 'templates'
+    template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates'))
+    
+    # Passa o caminho explicitamente para o Flask
+    app = Flask(__name__, template_folder=template_dir)
     
     # --- Configurações do Flask ---
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portal.db'
@@ -14,10 +19,9 @@ def create_app():
     db.init_app(app)
     
     with app.app_context():
-        # IMPORTANTE: Agora importamos e CHAMAMOS a função de registro
         from .views import register_routes
         register_routes(app)
         
-        db.create_all()  # Cria as tabelas
+        db.create_all()
         
         return app
