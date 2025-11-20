@@ -2,21 +2,37 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portal de Preços - PJI110</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Produtos Cadastrados</h1>
-    <a href="{{ url_for('novo_produto') }}">Adicionar Novo Produto</a>
-    <ul>
-      {% for produto in produtos %}
-      <li>
-        {{ produto.nome }} ({{ produto.categoria }}) - ID: {{ produto.id }}
-      </li>
-      {% endfor %}
-    </ul>
-    <h2>Controle de Versão (Git)</h2>
-    <p>
-      Projeto em desenvolvimento utilizando Controle de Versão (Git/GitHub).
-    </p>
+    <header>
+      <h1>Portal de Preços</h1>
+      <h2>PJI110 Projeto Integrador - UNIVESP</h2>
+    </header>
+
+    <main>
+      <h2>Produtos Cadastrados</h2>
+      <a href="{{ url_for('novo_produto') }}" class="add-link"
+        >Adicionar Novo Produto</a
+      >
+
+      <ul>
+        {% for produto in produtos %}
+        <li>
+          {{ produto.nome }} ({{ produto.categoria }}) - ID: {{ produto.id }}
+        </li>
+        {% endfor %}
+      </ul>
+    </main>
+
+    <footer>
+      <p>
+        Controle de Versão (Git): Projeto em desenvolvimento utilizando Controle
+        de Versão (Git/GitHub).
+      </p>
+    </footer>
   </body>
 </html>

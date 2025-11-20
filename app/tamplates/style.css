@@ -1,0 +1,77 @@
+/* Conteúdo do arquivo style.css */
+
+/* Estilização básica para o corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Fundo leve */
+  color: #333;
+}
+
+/* Estilo para o cabeçalho (Header) */
+header {
+  background-color: #007bff; /* Cor primária do cabeçalho (fundo) */
+  color: white; /* Cor da fonte do texto do cabeçalho */
+  padding: 5px 0;
+  text-align: center; /* Centraliza o texto do cabeçalho */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilo para o título principal (h1) */
+header h1 {
+  margin: 0; /* Remove margem padrão do h1 */
+  font-size: 2.5em;
+}
+
+/* Estilo para o conteúdo principal (Main) */
+main {
+  width: 80%;
+  margin: 20px auto; /* Centraliza o conteúdo principal */
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px; /* Cantos arredondados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para a lista de produtos */
+main ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+main li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+main li:last-child {
+  border-bottom: none;
+}
+
+/* Estilo para o rodapé (Footer) */
+footer {
+  background-color: #333; /* Cor escura do rodapé */
+  color: #bbb;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed; /* Fixa no final da tela */
+  bottom: 0;
+  width: 100%;
+  font-size: 0.9em;
+}
+
+/* Estilo para o link "Adicionar Novo Produto" */
+.add-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #28a745; /* Cor verde para ação */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.add-link:hover {
+  background-color: #218838;
+}
