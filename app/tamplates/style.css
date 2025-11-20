@@ -61,6 +61,15 @@ footer {
   font-size: 0.9em;
 }
 
+#footer_dados_git {
+  color: #ffffff;
+  /*font-weight: bold;*/
+}
+
+#footer_autor {
+  color: #bbb;
+}
+
 /* Estilo para o link "Adicionar Novo Produto" */
 .add-link {
   display: inline-block;
