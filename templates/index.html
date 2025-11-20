@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portal de Comparativo de Preços - PJI110</title>
+  </head>
+  <body>
+    <h1>Painel de Gerenciamento (PJI110)</h1>
+
+    <h2>Produtos</h2>
+    <a href="{{ url_for('novo_produto') }}">Cadastrar Novo Produto</a>
+    <ul>
+      {% for produto in produtos %}
+      <li>
+        **{{ produto.nome }}** ({{ produto.categoria }}) - Preço Médio: R$ {{
+        "%.2f"|format(produto.preco_medio) }}
+      </li>
+      {% endfor %}
+    </ul>
+
+    <h2>Supermercados</h2>
+    <a href="{{ url_for('novo_supermercado') }}">Cadastrar Novo Supermercado</a>
+    <ul>
+      {% for sup in supermercados %}
+      <li>{{ sup.nome }}</li>
+      {% endfor %}
+    </ul>
+
+    <h2>Listas de Compras</h2>
+    <p>Funcionalidade de detalhamento de lista será expandida no PJI240.</p>
+    <ul>
+      {% for lista in listas %}
+      <li>{{ lista.nome }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

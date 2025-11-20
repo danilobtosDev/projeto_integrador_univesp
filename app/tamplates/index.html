@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portal de Preços - PJI110</title>
+  </head>
+  <body>
+    <h1>Produtos Cadastrados</h1>
+    <a href="{{ url_for('novo_produto') }}">Adicionar Novo Produto</a>
+    <ul>
+      {% for produto in produtos %}
+      <li>
+        {{ produto.nome }} ({{ produto.categoria }}) - ID: {{ produto.id }}
+      </li>
+      {% endfor %}
+    </ul>
+    <h2>Controle de Versão (Git)</h2>
+    <p>
+      Projeto em desenvolvimento utilizando Controle de Versão (Git/GitHub).
+    </p>
+  </body>
+</html>
