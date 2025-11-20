@@ -4,16 +4,17 @@ from .models import db
 
 def create_app():
     app = Flask(__name__)
-    # Usando SQLite para simplicidade inicial (será migrado no PJI240)
+    
+    # --- Configurações do Flask ---
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portal.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # Chave Secreta para Sessões (necessária para armazenar localização)
+    app.secret_key = 'chave_de_comparacao_super_secreta'
+    # -----------------------------
     
     db.init_app(app)
     
     with app.app_context():
-        # Importa as rotas para registrá-las no app
         from . import views 
-        # Cria as tabelas no banco de dados, se não existirem
-        db.create_all()  
-        
+        db.create_all()  # Cria as tabelas
         return app

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Novo Supermercado</title>
+  </head>
+  <body>
+    <h1>Cadastro de Novo Supermercado</h1>
+    <form method="POST">
+      <label for="nome">Nome do Supermercado:</label><br />
+      <input type="text" id="nome" name="nome" required /><br /><br />
+
+      <button type="submit">Cadastrar</button>
+    </form>
+    <p><a href="{{ url_for('index') }}">Voltar para o Painel</a></p>
+  </body>
+</html>

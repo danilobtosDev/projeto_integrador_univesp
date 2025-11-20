@@ -2,40 +2,83 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portal de Preços - PJI110 Projeto Integrador - UNIVESP</title>
-
-    <link rel="stylesheet" href="style.css" />
+    <title>Portal de Comparativo de Preços - PJI110/PJI240</title>
   </head>
   <body>
-    <header>
-      <h1>Portal de Preços</h1>
-      <h2>PJI110 Projeto Integrador - UNIVESP</h2>
-    </header>
+    <h1>Portal de Comparativo de Preços</h1>
 
-    <main>
-      <h2>Produtos Cadastrados</h2>
-      <a href="{{ url_for('novo_produto') }}" class="add-link"
-        >Adicionar Novo Produto</a
+    <div id="location-widget">
+      <h3>
+        Localização Atual:
+        <span id="current-location-display">{{ user_location_display }}</span>
+      </h3>
+
+      <button onclick="loadManualLocationForm()">Alterar Localização</button>
+
+      <div
+        id="manual-location-form"
+        style="
+          display: none;
+          border: 1px solid #ccc;
+          padding: 10px;
+          margin-top: 10px;
+        "
       >
+        <h4>Mudar Região Manualmente</h4>
+        <form id="manual-location-input">
+          <label for="region_name">Nome da Cidade/Região:</label>
+          <input type="text" id="region_name" name="region_name" required />
+          <button type="submit">Confirmar</button>
+        </form>
+      </div>
+    </div>
 
-      <ul>
+    <hr />
+
+    <h2>Produtos Cadastrados</h2>
+    <p><a href="{{ url_for('novo_produto') }}">Cadastrar Novo Produto</a></p>
+    <table border="1" style="width: 50%">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Preço Médio (R$)</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for produto in produtos %}
-        <li>
-          {{ produto.nome }} ({{ produto.categoria }}) - ID: {{ produto.id }}
-        </li>
+        <tr>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.categoria }}</td>
+          <td>{{ "%.2f"|format(produto.preco_medio) }}</td>
+        </tr>
         {% endfor %}
-      </ul>
-    </main>
+      </tbody>
+    </table>
 
-    <footer>
-      <p id="footer_dados_git">
-        Controle de Versão (Git): Projeto em desenvolvimento utilizando Controle
-        de Versão (Git/GitHub).
-      </p>
-      <p id="footer_autor">
-        Autor: Danilo Catelani dos Reis de Oliveira - RA: 24226519.
-      </p>
-    </footer>
+    <br />
+
+    <h2>Supermercados</h2>
+    <p>
+      <a href="{{ url_for('novo_supermercado') }}"
+        >Cadastrar Novo Supermercado</a
+      >
+    </p>
+    <ul>
+      {% for sup in supermercados %}
+      <li>{{ sup.nome }}</li>
+      {% endfor %}
+    </ul>
+
+    <br />
+
+    <h2>Listas de Compras</h2>
+    <ul>
+      {% for lista in listas %}
+      <li>{{ lista.nome }}</li>
+      {% endfor %}
+    </ul>
+
+    <script src="{{ url_for('static', filename='js/location.js') }}"></script>
   </body>
 </html>
