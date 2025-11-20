@@ -61,11 +61,13 @@ footer {
   font-size: 0.9em;
 }
 
+/* Estilo do texto do Rodapé com dados da versao Git. */
 #footer_dados_git {
   color: #ffffff;
   /*font-weight: bold;*/
 }
 
+/* Estilo do texto do Rodapé com dados do Autor. */
 #footer_autor {
   color: #bbb;
 }
