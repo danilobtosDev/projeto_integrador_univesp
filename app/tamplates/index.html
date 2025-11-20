@@ -3,81 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <title>Portal de Comparativo de Preços - PJI110/PJI240</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
   <body>
     <h1>Portal de Comparativo de Preços</h1>
 
-    <div id="location-widget">
-      <h3>
-        Localização Atual:
-        <span id="current-location-display">{{ user_location_display }}</span>
-      </h3>
+    <div class="content-wrapper">
+      <div id="location-widget">
+        <h3>
+          Localização Atual:
+          <span id="current-location-display">{{ user_location_display }}</span>
+        </h3>
 
-      <button onclick="loadManualLocationForm()">Alterar Localização</button>
+        <button onclick="loadManualLocationForm()">Alterar Localização</button>
 
-      <div
-        id="manual-location-form"
-        style="
-          display: none;
-          border: 1px solid #ccc;
-          padding: 10px;
-          margin-top: 10px;
-        "
-      >
-        <h4>Mudar Região Manualmente</h4>
-        <form id="manual-location-input">
-          <label for="region_name">Nome da Cidade/Região:</label>
-          <input type="text" id="region_name" name="region_name" required />
-          <button type="submit">Confirmar</button>
-        </form>
+        <div id="manual-location-form" style="display: none">
+          <h4>Mudar Região Manualmente</h4>
+          <form id="manual-location-input">
+            <label for="region_name">Nome da Cidade/Região:</label>
+            <input type="text" id="region_name" name="region_name" required />
+            <button type="submit">Confirmar</button>
+          </form>
+        </div>
       </div>
+
+      <hr />
+
+      <h2>Produtos Cadastrados</h2>
+      <p><a href="{{ url_for('novo_produto') }}">Cadastrar Novo Produto</a></p>
+      <table style="width: 100%">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Preço Médio (R$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for produto in produtos %}
+          <tr>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.categoria }}</td>
+            <td>{{ "%.2f"|format(produto.preco_medio) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <br />
+
+      <h2>Supermercados</h2>
+      <p>
+        <a href="{{ url_for('novo_supermercado') }}"
+          >Cadastrar Novo Supermercado</a
+        >
+      </p>
+      <ul>
+        {% for sup in supermercados %}
+        <li>{{ sup.nome }}</li>
+        {% endfor %}
+      </ul>
+
+      <br />
+
+      <h2>Listas de Compras</h2>
+      <ul>
+        {% for lista in listas %}
+        <li>{{ lista.nome }}</li>
+        {% endfor %}
+      </ul>
     </div>
 
-    <hr />
-
-    <h2>Produtos Cadastrados</h2>
-    <p><a href="{{ url_for('novo_produto') }}">Cadastrar Novo Produto</a></p>
-    <table border="1" style="width: 50%">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Categoria</th>
-          <th>Preço Médio (R$)</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for produto in produtos %}
-        <tr>
-          <td>{{ produto.nome }}</td>
-          <td>{{ produto.categoria }}</td>
-          <td>{{ "%.2f"|format(produto.preco_medio) }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
-    <br />
-
-    <h2>Supermercados</h2>
-    <p>
-      <a href="{{ url_for('novo_supermercado') }}"
-        >Cadastrar Novo Supermercado</a
-      >
-    </p>
-    <ul>
-      {% for sup in supermercados %}
-      <li>{{ sup.nome }}</li>
-      {% endfor %}
-    </ul>
-
-    <br />
-
-    <h2>Listas de Compras</h2>
-    <ul>
-      {% for lista in listas %}
-      <li>{{ lista.nome }}</li>
-      {% endfor %}
-    </ul>
+    <footer>
+      Projeto Integrador em Computação I (PJI110) - UNIVESP - Eixo Computação
+      2024
+    </footer>
 
     <script src="{{ url_for('static', filename='js/location.js') }}"></script>
   </body>

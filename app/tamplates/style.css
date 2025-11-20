@@ -1,88 +1,160 @@
-/* Conteúdo do arquivo style.css */
+/* app/static/style.css */
 
-/* Estilização básica para o corpo da página */
+/* --- Configurações Básicas --- */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4; /* Fundo leve */
+  margin: 0; /* Remove margem padrão do body */
+  background-color: #f8f9fa; /* Fundo muito claro (quase branco) */
   color: #333;
+  display: flex; /* Usado para empurrar o rodapé para baixo */
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o corpo ocupe a altura total */
 }
 
-/* Estilo para o cabeçalho (Header) */
-header {
-  background-color: #007bff; /* Cor primária do cabeçalho (fundo) */
-  color: white; /* Cor da fonte do texto do cabeçalho */
-  padding: 5px 0;
-  text-align: center; /* Centraliza o texto do cabeçalho */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
-}
-
-/* Estilo para o título principal (h1) */
-header h1 {
-  margin: 0; /* Remove margem padrão do h1 */
-  font-size: 2.5em;
-}
-
-/* Estilo para o conteúdo principal (Main) */
-main {
-  width: 80%;
-  margin: 20px auto; /* Centraliza o conteúdo principal */
+.content-wrapper {
   padding: 20px;
-  background-color: white;
-  border-radius: 8px; /* Cantos arredondados */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Permite que o conteúdo ocupe o espaço restante */
 }
 
-/* Estilo para a lista de produtos */
-main ul {
+/* --- Títulos (Quadro Azul com Texto Branco) --- */
+h1 {
+  background-color: #007bff; /* Azul vibrante para o quadro do título principal */
+  color: white;
+  padding: 15px 20px;
+  margin: 0 0 20px 0; /* Remove margem superior */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2,
+h3 {
+  color: #004d99; /* Azul escuro para subtítulos */
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 30px 0;
+}
+
+/* --- Estilo de Botões e Links --- */
+a {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #28a745; /* Verde para ação principal */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* --- Localização Widget --- */
+#location-widget {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+#current-location-display {
+  font-weight: bold;
+  color: #dc3545; /* Cor de destaque para a localização */
+}
+
+#manual-location-form {
+  border: 1px dashed #ccc;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 4px;
+}
+
+#manual-location-form input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* --- Estilo de Listas e Tabelas (CRUD) --- */
+ul {
   list-style-type: none;
   padding: 0;
 }
 
-main li {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+li {
+  background: #e9ecef;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
 }
 
-main li:last-child {
-  border-bottom: none;
-}
-
-/* Estilo para o rodapé (Footer) */
-footer {
-  background-color: #333; /* Cor escura do rodapé */
-  color: #bbb;
-  text-align: center;
-  padding: 10px 0;
-  position: fixed; /* Fixa no final da tela */
-  bottom: 0;
+table {
+  border-collapse: collapse;
   width: 100%;
-  font-size: 0.9em;
+  margin-top: 10px;
 }
 
-/* Estilo do texto do Rodapé com dados da versao Git. */
-#footer_dados_git {
-  color: #ffffff;
-  /*font-weight: bold;*/
+th,
+td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  text-align: left;
 }
 
-/* Estilo do texto do Rodapé com dados do Autor. */
-#footer_autor {
-  color: #bbb;
-}
-
-/* Estilo para o link "Adicionar Novo Produto" */
-.add-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px 15px;
-  background-color: #28a745; /* Cor verde para ação */
+th {
+  background-color: #007bff;
   color: white;
-  text-decoration: none;
-  border-radius: 5px;
 }
 
-.add-link:hover {
-  background-color: #218838;
+/* --- Formulários de Cadastro (Mantido como quadro branco) --- */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin-top: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input[type='text'],
+form input[type='number'] {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* --- Rodapé (Quadro Cinza com Texto Branco) --- */
+footer {
+  background-color: #343a40; /* Cinza escuro */
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  margin-top: auto; /* Garante que fique no final da página */
 }
