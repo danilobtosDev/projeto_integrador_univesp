@@ -1,5 +1,0 @@
-Flask
-Flask-SQLAlchemy
-# Outras bibliotecas que serão usadas no PJI240:
-# requests (para APIs)
-# pytest (para testes)
