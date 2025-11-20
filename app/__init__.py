@@ -8,13 +8,16 @@ def create_app():
     # --- Configurações do Flask ---
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portal.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    # Chave Secreta para Sessões (necessária para armazenar localização)
     app.secret_key = 'chave_de_comparacao_super_secreta'
     # -----------------------------
     
     db.init_app(app)
     
     with app.app_context():
-        from . import views 
+        # IMPORTANTE: Agora importamos e CHAMAMOS a função de registro
+        from .views import register_routes
+        register_routes(app)
+        
         db.create_all()  # Cria as tabelas
+        
         return app
